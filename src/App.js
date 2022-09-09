@@ -1,24 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import { Canvas } from '@react-three/fiber'
+import Container from './components/Container';
+import ControlsPanel from './components/ControlsPanel';
+import useControlOptions from './hooks/useControlOptions';
 
 function App() {
+  const [state, setState] = useControlOptions()
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Canvas>
+        <Container state={state} />
+      </Canvas>
+      <ControlsPanel state={state} setState={setState} />
+
+      <span className='credit'>3D model by <a href="https://skfb.ly/oxGoB" target="_blank" rel="noreferrer">"Lada Niva"</a> by Veisun is licensed under <a href="http://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noreferrer">Creative Commons Attribution</a>.</span>
+    </>
   );
 }
 
