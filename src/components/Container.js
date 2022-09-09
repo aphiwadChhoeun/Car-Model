@@ -1,7 +1,8 @@
+import { Suspense } from 'react'
 import { Stage, OrbitControls } from '@react-three/drei'
 import Car from './Car'
 
-export default function Container({state}) {
+export default function Container({ state }) {
     return (
         <>
             <Stage
@@ -11,7 +12,9 @@ export default function Container({state}) {
                 intensity={.25}
                 environment="studio"
                 preset="rembrandt">
-                <Car state={state} />
+                <Suspense fallback={null}>
+                    <Car state={state} />
+                </Suspense>
             </Stage>
             <OrbitControls makeDefault dampingFactor={0.05}
                 minDistance={1}
