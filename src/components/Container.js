@@ -6,7 +6,11 @@ export default function Container({ state }) {
     return (
         <>
             <Stage
-                contactShadow
+                contactShadow={{
+                    far: 3,
+                    blur: .8,
+                    scale: 20
+                }}
                 shadows
                 adjustCamera
                 intensity={.25}
@@ -16,7 +20,11 @@ export default function Container({ state }) {
                     <Car state={state} />
                 </Suspense>
             </Stage>
-            <OrbitControls makeDefault dampingFactor={0.05}
+
+            <OrbitControls makeDefault
+                autoRotate={true}
+                autoRotateSpeed={.25}
+                dampingFactor={0.05}
                 minDistance={1}
                 maxDistance={5}
                 enablePan={false} />
